@@ -1,7 +1,7 @@
 # Encodedummy
 
 ## Description
-Simple R package to fast encode non-numeric variables into dummy columns. It is useful when preparing large long datasets for Ridge/Lasso functions in glmnet package or other models that require input data to be numeric data.frames or matrices. 
+Simple R package to fast encode non-numeric variables into dummy columns. It is useful when preparing long datasets for Ridge/Lasso functions in glmnet package or other models that require input data to be numeric data.frames or matrices. 
 
 ## Installing
 
