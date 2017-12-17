@@ -16,7 +16,7 @@ encodedummy_col = function(dat_, drop_first_level=FALSE, keep_origin_cols=FALSE,
   .create_dummy_cols = function(col_,unique_level_percol,col_newname, dat){
     col_unique = unique_level_percol[[col_]]
     col_name = col_newname[[col_]]
-    dat[,(col_name):=lapply(col_unique, chmatch, x=get(col_),nomatch=0L)]
+    dat[,(col_name):=lapply(col_unique, chmatch, x=as.character(get(col_)),nomatch=0L)]
   }
   #####################
 
@@ -31,7 +31,6 @@ encodedummy_col = function(dat_, drop_first_level=FALSE, keep_origin_cols=FALSE,
   # get non-numeric column names
   col_attr = sapply(dat, is.numeric)
   col_to_encode = c(names(dat)[!col_attr])
-  dat[,(col_to_encode):=lapply(.SD,as.character),.SDcols=col_to_encode]
 
   # get unique values for each columns
   unique_level_percol = dat[,.(lapply(.SD,unique)),.SDcols=col_to_encode]$V1
