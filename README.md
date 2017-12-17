@@ -1,7 +1,7 @@
 # Encodedummy
 
 ## Description
-Simple R package to fast encode non-numeric variables into dummy columns. It is useful when preparing data for Ridge/Lasso in glmnet package or other models that require input data are numeric data.frames or matrices. 
+Simple R package to fast encode non-numeric variables into dummy columns. It is useful when preparing data for Ridge/Lasso in glmnet package or other models that require input data to be numeric data.frames or matrices. 
 
 ## Installing
 
@@ -15,7 +15,7 @@ Simple R package to fast encode non-numeric variables into dummy columns. It is 
     devtools::install_github("yu45020/encodedummy")
     ```
 
-## Requirement
+## Require Package
 Data.table
 
 
