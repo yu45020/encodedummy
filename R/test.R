@@ -1,20 +1,18 @@
 library(data.table)
 library(pryr)
 
-source('DummyTransform.R')
-
+source('DummyTransformer.R')
+n=1e6
 dat = data.table(
-  A = LETTERS[sample(26, 100, replace = TRUE)],
-  B = letters[sample(26, 100, replace = TRUE)],
-  C = sample(100,100,replace=TRUE)
+  A = LETTERS[sample(10, n, replace = TRUE)],
+  B = factor(letters[sample(10, n, replace = TRUE)]),
+  C = LETTERS[sample(10, n, replace = TRUE)],
+  D = factor(letters[sample(10, n, replace = TRUE)])
 )
 
 dat2 = dat[sample(10), ]
 
-
-
 dat_ = copy(dat)
-
 
 dat.transformer =  dummy_transfer(dat)
 
@@ -29,20 +27,32 @@ df2 = data.table(dat3$A, dat2$A)
 df2 = unique(df2)
 df2 = df2[order(V2)]
 
+dafsdaf = function(){
+  if(to=='numeric' & convert_to_fact){
+    # get unique value for each col
+    new_unique = dat[, .(lapply(.SD,unique)), .SDcols = cols]$V1
 
-convert = function(dat, code_book){
-  code_book = dat[,.(lapply(.SD,unique)),.SDcols=c("A","B")]$V1
-  code_book
-  names(code_book)=c("A","B")
-  
-  for(1 in 1:length(code_book)){
-    code_ch = code_book[[i]]
-    code_nu = code_book[[i]]
-    col = names(code_book)[i]
-    
-    for(code_ in code_ch){
-      dat[code_, (col):= ]
+    for(i in 1:length(new_unique)){
+      new_unique_1 = new_unique[[i]]
+      code_book_1 = code_book_[['factor']][[i]]
+
+      # if new data has more unique values
+      if(length(new_unique_1)> length(code_book_1)){
+        new_length = length(new_unique_1)
+        code_book_[['factor']][[i]] = unique(c(code_book_1,new_unique_1 ))
+        code_book_[['numeric']][[i]] = c(1:new_length)
+      }else if (length(new_unique_1) < length(code_book_1)){
+        # input data has fewer unique values, so subset the code book
+        matched_unique = chmatch(new_unique_1 , code_book_1)
+        code_book_[['factor']][[i]] = code_book_[['factor']][[i]][matched_unique]
+        code_book_[['numeric']][[i]] = code_book_[['numeric']][[i]][matched_unique]
+      }
     }
-    
+
+    # maintain the same order as the original data
+    x = dat[, (cols):= mapply(factor,x=.SD , levels=code_book_[['factor']],
+                              labels =code_book_[['numeric']], ordered=FALSE, SIMPLIFY = FALSE ),
+            .SDcols=cols]
+    invisible(x)
   }
 }
