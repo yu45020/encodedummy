@@ -1,8 +1,8 @@
-\name{encodedummy_col}
-\alias{encodedummy_col}
+\name{dummy_to_cols}
+\alias{dummy_to_cols}
 \title{Fast Encode Non-Numeric Variables into Dummy Columns}
 \usage{
-encodedummy_col(data, drop_first_level=FALSE,
+dummy_to_cols(data, drop_first_level=FALSE,
 keep_origin_cols=FALSE, sep_char='=', inplace=FALSE)
 }
 \description{

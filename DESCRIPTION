@@ -1,11 +1,11 @@
 Package: encodedummy
 Type: Package
 Title: Fast Encode Non-Numeric Variables into Dummy Columns
-Version: 1.64
+Version: 1.65
 Author: Hengyu Kuang
 Github: https://github.com/yu45020
 Description: Fast encode non-numeric variables and transform them into dummy columns
 Encoding: UTF-8
 License: GPL-3
-LazyData: Dec, 11th, 2017
+LazyData: Jan, 25th, 2018
 Imports: data.table
