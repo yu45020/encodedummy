@@ -61,6 +61,10 @@ It contains three parts:
     3. update code book for new data when there are unknown unique type
 ```
 # generate random dataset
+library(wakefield)
+library(data.table)
+library(encodedummy)
+
 n = 1e6
 df = r_data_frame(
   n = n,
