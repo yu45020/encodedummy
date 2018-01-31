@@ -1,4 +1,4 @@
-dummy_to_cols = function(dat_, drop_first_level=FALSE, keep_origin_cols=FALSE, sep_char='=',inplace=FALSE){
+dummy_to_cols = function(dat_, drop_first_level = FALSE, keep_origin_cols = FALSE, sep_char = '=', inplace = FALSE) {
   ## For data sets with columns that have dummy variables (characters & factors), this function create new
   ##  dummy columns with (1, 0).
 

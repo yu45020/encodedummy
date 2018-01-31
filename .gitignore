@@ -32,3 +32,10 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 .Rproj.user
+*.suo
+*.rxproj
+*.user
+*.sln
+/.vs/encodedummy/v15
+*.user
+*.sln
